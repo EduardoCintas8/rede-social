@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FacebrukController;
+use App\Http\Controllers\DevbookController;
 
 
 Route::get('/', function () {
@@ -11,5 +11,7 @@ Route::get('/', function () {
 
 
 Route::prefix('devbook')->group(function () {
-    Route::get('/login', [FacebrukController::class, 'login']);
+    Route::get('/login', [DevbookController::class, 'login'])->name('login');
+    Route::post('/validauser', [DevbookController::class, 'valida'])->name('valida');
+    Route::get('/index', [DevbookController::class,  'index'])->name('index');
 });

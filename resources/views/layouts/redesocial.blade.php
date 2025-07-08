@@ -20,8 +20,8 @@
         @yield('content')
     </main>
 
-    <footer class="bg-blue-600 text-white p-4 text-center">
-        &copy; {{ date('Y') }} Eduardo Cintas
+    <footer class="bg-blue-600 text-white p-4 text-end">
+        &copy; {{ date('Y') }} By Eduardo Cintas
     </footer>
 </body>
 </html>
