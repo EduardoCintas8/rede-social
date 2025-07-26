@@ -3,22 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CadastroRequest;
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
 
 class DevbookController extends Controller
 {
-    public function valida(Request $request)
+    public function validaLogin(LoginRequest $request)
     {
-        $email = $request->input('email');
-        $password = $request->input('password');
-        // dd($request->all());
 
-        if ($email && $password) {
+        try {
+            $request->authenticate();
             return to_route('index');
-        } else {
-            return to_route('login')->with('error', 'E-mail ou Senha inválido');
+        } catch (\Throwable $th) {
+return back()->withErrors(['error' => $th->getMessage()]);
         }
     }
 
@@ -26,13 +25,15 @@ class DevbookController extends Controller
     {
         try {
             User::create($request->validated());
+          return to_route('login')->with('success', 'Cadastro efetuado com sucesso!');
+
         } catch (\Throwable $th) {
-            dd($th);
+           return back()->withErrors(['error' => $th->getMessage()]);
         }
     }
 
     public function index()
     {
-        return view('index');
+        return view('pages.index');
     }
 }

@@ -1,29 +1,18 @@
-@extends('layouts.redesocial')
-
-@section('title', 'Login Devbook')
-
-@section('namepage', 'Bem-vindo(a) ao DevBook')
-
-@section('css')
-<link href="{{ asset('css/login.css') }}" rel="stylesheet">
-@endsection
-
-@section('content')
-
-<div class="row" style="justify-content: center">
-
+<div>
+   
     <div class="d-flex justify-content-center">
+
         <div class="login-container">
             <h2>Login no DevBook</h2>
-            <form method="POST" action="{{route('valida-login')}}">
+          <form wire:submit="login">
                 @csrf
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                    <input type="email" class="form-control" id="email" name="email" wire:model="email" placeholder="name@example.com">
                     <label for="email">E-mail</label>
                 </div>
 
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                    <input type="password" class="form-control" id="password" name="password" wire:model="password" placeholder="Password" >
                     <label for="password">Senha</label>
                 </div>
 
@@ -33,12 +22,18 @@
                 </div>
 
                 <div class="d-flex justify-content-center mt-2">
-                    @if (session('error'))
+
+                    {{-- Erros de validação --}}
+                    @if ($errors->any())
                     <div class="alert alert-dark" style="color: black">
-                        {{ session('error') }}
+                        <i data-feather="alert-triangle" style="color: rgb(0, 0, 0)"></i>
+                        {{ $errors->first() }}
+
                     </div>
                     @endif
+
                 </div>
+
 
                 <div class="d-flex justify-content-center">
                     <a href="/recuperar-senha" class="forgot-password">Esqueci minha senha</a>
@@ -67,4 +62,4 @@
     </div> --}}
 
 </div>
-@endsection
+</div>

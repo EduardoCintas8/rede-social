@@ -18,19 +18,19 @@ class CadastroRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:6',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'name.required'       => 'O nome é obrigatório.',
-            'email.required'      => 'O e-mail é obrigatório.',
+            'name.required'       => 'O Nome é obrigatório.',
+            'email.required'      => 'O E-mail é obrigatório.',
             'email.email'         => 'Por favor, informe um e-mail válido.',
             'email.unique'        => 'Este e-mail já está em uso.',
-            'password.required'   => 'A senha é obrigatória.',
-            'password.min'        => 'A senha deve ter ao menos :min caracteres.',
+            'password.required'   => 'A Senha é obrigatória.',
+            'password.min'        => 'A Senha deve ter ao menos :min caracteres.',
             'password.confirmed'  => 'A confirmação da senha não corresponde.',
         ];
     }

@@ -16,14 +16,7 @@
         <div class="login-container col-3">
             <h2 class="justify-content-center d-flex">Cadastro</h2>
 
-            <div class="d-flex justify-content-center mt-3">
-                @if ($errors->any())
-                <div class="alert alert-dark d-flex justify-content-center" style="color: black">
-                    <i data-feather="alert-triangle" style="color: rgb(0, 0, 0)"></i>
-                    {{ $errors->first() }}
-                </div>
-                @endif
-            </div>
+
 
             <form method="POST" action="{{route('valida-cadastro')}}">
                 @csrf
@@ -46,6 +39,15 @@
 
                 <div class="d-flex justify-content-center mt-3">
                     <button class="btn btn-primary btn-lg w-75" type="submit">Cadastrar</button>
+                </div>
+
+                <div class="d-flex justify-content-center mt-3">
+                    @if ($errors->any())
+                    <div class="alert alert-dark d-flex justify-content-center" style="color: black">
+                        <i data-feather="alert-triangle" style="color: rgb(0, 0, 0)"></i>
+                        {{ $errors->first() }}
+                    </div>
+                    @endif
                 </div>
 
 

@@ -7,7 +7,10 @@ $tema = request()->cookie('theme', 'light');
 
 <head>
     <meta charset="UTF-8">
+    @livewireStyles
     <title>@yield('title')</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <!-- CSS global -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -18,6 +21,7 @@ $tema = request()->cookie('theme', 'light');
 </head>
 
 <body class="d-flex flex-column min-vh-100" style="background-color: {{$tema}}">
+@livewireScripts
 
     <header class="bg-primary text-white p-4">
 

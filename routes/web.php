@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Cookie;
 
 
 Route::get('/', function () {
-    return view('login');
+    return view('pages.login');
 });
 
 
@@ -19,7 +19,7 @@ Route::prefix('devbook')->group(function () {
     })->name('login');
 
     #Rota valida Login
-    Route::post('/valida-login', [DevbookController::class, 'valida'])->name('valida-login');
+    Route::post('/valida-login', [DevbookController::class, 'validaLogin'])->name('valida-login');
 
     #Rota Tela principal
     Route::get('/index', [DevbookController::class,  'index'])->name('index');
