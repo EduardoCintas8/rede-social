@@ -15,7 +15,7 @@ Route::get('/', function () {
 Route::prefix('devbook')->group(function () {
     #Rota tela Login
     Route::get('/login', function () {
-        return view('login');
+        return view('pages.login');
     })->name('login');
 
     #Rota valida Login

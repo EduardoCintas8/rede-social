@@ -8,8 +8,11 @@
 <link href="{{ asset('css/index.css') }}" rel="stylesheet">
 @endsection
 
-
 @section('content')
+
+
+<livewire:select />
+
 
 @endsection
 
